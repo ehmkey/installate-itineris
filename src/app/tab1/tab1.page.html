@@ -1,25 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
+    <ion-title> Erfassung </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Erfassung</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- Icons -->
+  <ion-button>
+    <ion-icon slot="start" name="star"></ion-icon>
+    Left Icon
+  </ion-button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-     <!-- Icons -->
-     <ion-button>
-      <ion-icon slot="start" name="star"></ion-icon>
-      Left Icon
-    </ion-button>
-
-    <ion-button>
-      Right Icon
-      <ion-icon slot="end" name="star"></ion-icon>
-    </ion-button>
+  <ion-button>
+    Right Icon
+    <ion-icon slot="end" name="star"></ion-icon>
+  </ion-button>
 </ion-content>
