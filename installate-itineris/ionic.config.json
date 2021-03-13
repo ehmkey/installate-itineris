@@ -1,0 +1,7 @@
+{
+  "name": "installate-itineris",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
