@@ -15,7 +15,8 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - uses: npm install -g @ionic/cli
+      - name: Install Ionic cli
+        run: npm install -g @ionic/cli
       - run: ionic build --prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
