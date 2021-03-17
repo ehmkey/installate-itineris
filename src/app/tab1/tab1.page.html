@@ -10,14 +10,42 @@
       <ion-title size="large">Erfassung</ion-title>
     </ion-toolbar>
   </ion-header>
-  <!-- Icons -->
-  <ion-button>
-    <ion-icon slot="start" name="star"></ion-icon>
-    Left Icon
-  </ion-button>
 
-  <ion-button>
-    Right Icon
-    <ion-icon slot="end" name="star"></ion-icon>
-  </ion-button>
+  <ion-item>
+    <ion-label>Number</ion-label>
+    <ion-input type="number" value="{{getNextTaskNumber()}}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">DD.MM.YYYY</ion-label>
+    <ion-datetime displayFormat="DD.MM.YYYY" min="2020-01-01" value="{{date}}"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Start</ion-label>
+    <ion-datetime displayFormat="HH:mm" value="{{travelStart | date: 'yyyy/MM/dd HH:mm:ss'}}"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">End</ion-label>
+    <ion-datetime displayFormat="HH:mm" value="{{workStart | date: 'yyyy/MM/dd HH:mm:ss'}}"></ion-datetime>
+    </ion-item>
+
+    <!-- Icons -->
+    <ion-button (click)="startTravelTime()">
+      <ion-icon slot="start" name="car-outline"></ion-icon>
+      Starte Fahrzeit
+    </ion-button>
+  
+    <ion-button (click)="startWorkTime()">
+      Starte Arbeitszeit
+      <ion-icon slot="end" name="construct-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="finished()">
+      Fertig
+      <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+    </ion-button>
+
+
 </ion-content>
