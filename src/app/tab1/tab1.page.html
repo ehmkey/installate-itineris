@@ -11,41 +11,69 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-    <ion-label>Number</ion-label>
-    <ion-input type="number" value="{{getNextTaskNumber()}}"></ion-input>
-  </ion-item>
+  <ion-list lines="full">
+    <form [formGroup]="appointmentForm" (ngSubmit)="formSubmit()">
+      <ion-item>
+        <ion-label>Number</ion-label>
+        <ion-input formControlName="number" type="text" required></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">DD.MM.YYYY</ion-label>
-    <ion-datetime displayFormat="DD.MM.YYYY" min="2020-01-01" value="{{date}}"></ion-datetime>
-  </ion-item>
+      <ion-item>
+        <ion-label position="stacked">DD.MM.YYYY</ion-label>
+        <ion-datetime
+          formControlName="date"
+          displayFormat="DD.MM.YYYY"
+        ></ion-datetime>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Start</ion-label>
-    <ion-datetime displayFormat="HH:mm" value="{{travelStart | date: 'yyyy/MM/dd HH:mm:ss'}}"></ion-datetime>
-  </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Fahrzeit Start</ion-label>
+        <ion-datetime
+          formControlName="travelTimeStart"
+          displayFormat="HH:mm"
+        ></ion-datetime>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">End</ion-label>
-    <ion-datetime displayFormat="HH:mm" value="{{workStart | date: 'yyyy/MM/dd HH:mm:ss'}}"></ion-datetime>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Fahrzeit Ende</ion-label>
+        <ion-datetime
+          formControlName="travelTimeEnd"
+          displayFormat="HH:mm"
+        ></ion-datetime>
+      </ion-item>
 
-    <!-- Icons -->
-    <ion-button (click)="startTravelTime()">
-      <ion-icon slot="start" name="car-outline"></ion-icon>
-      Starte Fahrzeit
-    </ion-button>
-  
-    <ion-button (click)="startWorkTime()">
-      Starte Arbeitszeit
-      <ion-icon slot="end" name="construct-outline"></ion-icon>
-    </ion-button>
+      <ion-item>
+        <ion-label position="stacked">Arbeitszeit Start</ion-label>
+        <ion-datetime
+          formControlName="workTimeStart"
+          displayFormat="HH:mm"
+        ></ion-datetime>
+      </ion-item>
 
-    <ion-button (click)="finished()">
-      Fertig
-      <ion-icon slot="end" name="checkmark-outline"></ion-icon>
-    </ion-button>
+      <ion-item>
+        <ion-label position="stacked">Arbeitszeit Ende</ion-label>
+        <ion-datetime
+          formControlName="workTimeEnd"
+          displayFormat="HH:mm"
+        ></ion-datetime>
+      </ion-item>
 
+      <!-- Buttons -->
+      <ion-button (click)="startTravelTime()">
+        <ion-icon slot="start" name="car-outline"></ion-icon>
+        Starte Fahrzeit
+      </ion-button>
 
+      <ion-button (click)="startWorkTime()">
+        Starte Arbeitszeit
+        <ion-icon slot="end" name="construct-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button type="submit" [disabled]="!appointmentForm.valid">
+        <ion-icon slot="start" name="car-outline"></ion-icon>
+        Done
+        <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </form>
+  </ion-list>
 </ion-content>
