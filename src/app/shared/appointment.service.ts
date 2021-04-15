@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Appointment } from '../shared/Appointment';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
@@ -12,7 +13,7 @@ export class AppointmentService {
 
   constructor(private db: AngularFireDatabase) {
     this.appointments = db.list('/appointment');
-   }
+  }
 
   // Create
   create(apt: Appointment) {
@@ -21,10 +22,10 @@ export class AppointmentService {
       number: apt.number,
       travelTimeEnds: apt.travelTimeEnd,
       travelTimeStart: apt.travelTimeStart,
-      workTimeEnd : apt.workTimeEnd,
-      workTimeStart : apt.workTimeStart,
-      startPosition : apt.startPosition,
-      endPosition : apt.endPosition 
+      workTimeEnd: apt.workTimeEnd,
+      workTimeStart: apt.workTimeStart,
+      startPosition: apt.startPosition,
+      endPosition: apt.endPosition
     })
   }
 
@@ -34,7 +35,7 @@ export class AppointmentService {
   }
 
   getAll() {
-    this.appointments = this.db.list('/appointment');
+    this.appointments = this.db.list('/appointment', ref => ref.orderByChild('date'));
     return this.appointments;
   }
 
@@ -44,10 +45,10 @@ export class AppointmentService {
       number: apt.number,
       travelTimeEnds: apt.travelTimeEnd,
       travelTimeStart: apt.travelTimeStart,
-      workTimeEnd : apt.workTimeEnd,
-      workTimeStart : apt.workTimeStart,
-      startPosition : apt.startPosition,
-      endPosition : apt.endPosition
+      workTimeEnd: apt.workTimeEnd,
+      workTimeStart: apt.workTimeStart,
+      startPosition: apt.startPosition,
+      endPosition: apt.endPosition
     })
   }
 
